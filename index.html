@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porsche Series</title>
+
+<style>
+
+:root{
+  --img-car: url("porsche-911-dakar-7680x5453-9256.jpg");
+  --bg:#050508;
+  --cyan:#00f0ff;
+  --magenta:#ff2f92;
+  --white:#eaeaea;
+}
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Segoe UI, system-ui, sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top, #15151f, var(--bg));
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+}
+
+.logo{
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#ccc;
+  font-size:.9rem;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:var(--cyan);
+}
+
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  padding:140px 80px 80px;
+  gap:50px;
+  align-items:center;
+}
+
+
+.hero-text h1{
+  font-size:clamp(3.5rem,6vw,6rem);
+  font-weight:900;
+  letter-spacing:3px;
+  background:linear-gradient(90deg,var(--cyan),var(--magenta),var(--cyan));
+  background-size:300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color:transparent;
+  animation:neonFlow 6s linear infinite;
+}
+
+@keyframes neonFlow{
+  0%{background-position:0%}
+  100%{background-position:300%}
+}
+
+.hero-text p{
+  margin-top:25px;
+  max-width:560px;
+  font-size:1.05rem;
+  line-height:1.9;
+  color:#bdbdbd;
+}
+
+.hero-cta{
+  margin-top:40px;
+  display:flex;
+  gap:20px;
+}
+
+.btn{
+  padding:14px 36px;
+  border-radius:40px;
+  border:1px solid var(--cyan);
+  background:transparent;
+  color:var(--cyan);
+  cursor:pointer;
+  letter-spacing:1px;
+  transition:.3s ease;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(0,240,255,.4);
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--cyan),var(--magenta));
+  color:#000;
+  border:none;
+}
+
+
+.car-wrap{
+  perspective:1200px;
+}
+
+.car-visual{
+  height:420px;
+  border-radius:24px;
+  background:
+    linear-gradient(135deg,rgba(0,240,255,.12),rgba(255,47,146,.12)),
+    var(--img-car) center / contain no-repeat;
+  box-shadow:
+    0 0 80px rgba(0,240,255,.25),
+    inset 0 0 40px rgba(255,255,255,.05);
+  transform-style:preserve-3d;
+  transition:transform .15s ease;
+}
+
+.section{
+  max-width:1000px;
+  margin:110px auto;
+  padding:0 25px;
+}
+
+.section h2{
+  font-size:2.8rem;
+  margin-bottom:22px;
+}
+
+.section h3{
+  font-size:2.2rem;
+  margin-bottom:18px;
+}
+
+.section p{
+  font-size:1.05rem;
+  line-height:1.9;
+  color:#bdbdbd;
+  margin-bottom:18px;
+}
+
+
+.section-grid{
+  display:grid;
+  grid-template-columns:1.3fr .9fr;
+  gap:50px;
+}
+
+.highlight-box{
+  backdrop-filter:blur(14px);
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(0,240,255,.35);
+  border-radius:20px;
+  padding:30px;
+}
+
+.highlight-box p{
+  margin-bottom:14px;
+  font-size:.95rem;
+  color:#eaeaea;
+}
+
+
+footer{
+  padding:30px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#777;
+  font-size:.85rem;
+}
+
+
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    padding:150px 25px 60px;
+  }
+  .section-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+<nav class="navbar">
+  <div class="logo">PORSCHE SERIES</div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Models</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>PORSCHE SERIES</h1>
+    <p>
+      The Porsche 911 Dakar is a bold fusion of motorsport heritage and futuristic
+      engineering—designed to conquer both road and extreme terrain.
+    </p>
+
+    <div class="hero-cta">
+      <button class="btn primary">Explore Model</button>
+      <button class="btn">Specifications</button>
+    </div>
+  </div>
+
+  <div class="car-wrap">
+    <div class="car-visual" id="car"></div>
+  </div>
+</section>
+
+
+<section class="section">
+  <h2>Vehicle Overview</h2>
+  <p>
+    The Porsche 911 Dakar is a radical reinterpretation of the iconic 911,
+    engineered to perform far beyond traditional road limits. Inspired by
+    Porsche’s historic rally victories, this model blends supercar precision
+    with off-road capability.
+  </p>
+  <p>
+    With elevated ground clearance, reinforced components, and intelligent
+    all-wheel drive, the 911 Dakar dominates both asphalt and extreme terrain.
+  </p>
+</section>
+
+
+<section class="section section-grid">
+  <div>
+    <h3>Performance & Engineering</h3>
+    <p>
+      A high-performance flat-six engine delivers instant throttle response
+      and relentless acceleration. Adaptive suspension systems dynamically
+      adjust to changing surface conditions.
+    </p>
+    <p>
+      Intelligent all-wheel drive maximizes traction while reinforced chassis
+      architecture ensures durability under extreme loads.
+    </p>
+  </div>
+  <div class="highlight-box">
+    <p><strong>Powertrain:</strong> Twin-Turbo Flat-Six</p>
+    <p><strong>Drivetrain:</strong> Intelligent AWD</p>
+    <p><strong>Chassis:</strong> Reinforced Lightweight Frame</p>
+    <p><strong>Suspension:</strong> Rally-Tuned Adaptive System</p>
+  </div>
+</section>
+
+
+<section class="section">
+  <h2>Exterior Design Details</h2>
+  <p>
+    Increased ride height, widened arches, and aggressive body contours are
+    engineered for protection, stability, and aerodynamic efficiency.
+  </p>
+  <p>
+    The iconic Porsche silhouette remains intact, enhanced with motorsport
+    detailing and lightweight performance materials.
+  </p>
+</section>
+
+
+<section class="section section-grid">
+  <div>
+    <h3>Interior & Technology</h3>
+    <p>
+      The driver-focused cockpit combines performance seating, premium
+      materials, and intuitive controls for complete command.
+    </p>
+    <p>
+      Advanced digital displays provide real-time performance data and
+      terrain information.
+    </p>
+  </div>
+  <div class="highlight-box">
+    <p><strong>Cockpit:</strong> Driver-Centric Layout</p>
+    <p><strong>Displays:</strong> Digital Performance HUD</p>
+    <p><strong>Controls:</strong> Adaptive Drive Modes</p>
+    <p><strong>Materials:</strong> Lightweight Premium Finishes</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Driving Experience</h2>
+  <p>
+    Steering feedback is sharp and responsive, delivering a direct connection
+    between driver, machine, and terrain.
+  </p>
+  <p>
+    From high-speed roads to rugged landscapes, the 911 Dakar adapts instantly,
+    delivering engineered emotion at every moment.
+  </p>
+</section>
+
+<footer>
+  © 2025 Porsche Series
+</footer>
+
+<script>
+
+const car = document.getElementById("car");
+
+document.addEventListener("mousemove", (e)=>{
+  const x = (window.innerWidth/2 - e.clientX) / 40;
+  const y = (window.innerHeight/2 - e.clientY) / 40;
+  car.style.transform = `rotateY(${x}deg) rotateX(${y}deg) translateZ(20px)`;
+});
+
+document.addEventListener("mouseleave", ()=>{
+  car.style.transform = "rotateY(0) rotateX(0)";
+});
+</script>
+
+</body>
+</html>
